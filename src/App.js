@@ -1,8 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import './App.css';
 import MovieRow from './MovieRow.js'
+import API_KEY from './keys';
 const axios=require('axios')
-
 function App() {
   const [state,setState]=useState({})  
     useEffect(()=>{
@@ -15,7 +15,7 @@ function App() {
     }
 
   const performSearch=(searchTerm) =>{
-    const urlString = "https://api.themoviedb.org/3/search/movie?api_key=1b5adf76a72a13bad99b8fc0c68cb085&query=" + searchTerm
+    const urlString = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=` + searchTerm
     axios.get(urlString)
     .then((searchResults)=>{
       const results = searchResults.data.results
